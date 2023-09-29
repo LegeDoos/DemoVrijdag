@@ -16,7 +16,7 @@ namespace DemoVrijdag.Models
         /// </summary>
         [NotMapped, DisplayName("Number of students")]
         public int NumberOfStudents { 
-            get { return 1; }
+            get { return Students != null ? Students.Count : 0 ; }
         }
 
         /// <summary>
