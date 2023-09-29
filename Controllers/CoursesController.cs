@@ -35,6 +35,8 @@ namespace DemoVrijdag.Controllers
             }
 
             var course = await _context.Course
+                // explicit load students
+                .Include(p => p.Students)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (course == null)
             {
