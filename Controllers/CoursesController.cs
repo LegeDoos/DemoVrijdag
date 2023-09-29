@@ -22,7 +22,8 @@ namespace DemoVrijdag.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Course != null ? 
-                          View(await _context.Course.ToListAsync()) :
+                // explicitly load the students when loading the course from db
+                          View(await _context.Course.Include(p => p.Students).ToListAsync()) :
                           Problem("Entity set 'AppDBContext.Course'  is null.");
         }
 

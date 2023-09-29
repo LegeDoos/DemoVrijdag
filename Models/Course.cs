@@ -1,5 +1,8 @@
 ﻿using Microsoft.CodeAnalysis.Options;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata.Ecma335;
 
 namespace DemoVrijdag.Models
 {
@@ -7,6 +10,14 @@ namespace DemoVrijdag.Models
     {
         public int Id { get; set; }
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Method to calculate the number of students
+        /// </summary>
+        [NotMapped, DisplayName("Number of students")]
+        public int NumberOfStudents { 
+            get { return 1; }
+        }
 
         /// <summary>
         /// Currency in type decimal. Decoreren met Currency attribuut
