@@ -24,27 +24,34 @@
         </dd>
     </dl>
 
+    <h3>Course participants</h3>
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    Naam
+                    Id
                 </th>
                 <th>
-                    Course
+                    Name
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Students)
+            @if (Model.Students != null)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                  
-                </tr>
+                @foreach (var item in Model.Students)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+
+                    </tr>
+                }
             }
         </tbody>
     </table>
