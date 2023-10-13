@@ -118,6 +118,10 @@ namespace DemoVrijdag.Controllers
                 {
                     // haal de course opnieuw op
                     var c = await _context.Course.FindAsync(id);
+                    if (c == null)
+                    {
+                        return NotFound();
+                    }
                     c.Name = course.Name;
                     c.Price = newPrice;
                     _context.Update(c);
