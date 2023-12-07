@@ -13,7 +13,7 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK! ${{secrets.API_KEY}}"
         env:
           First_Name: Mona
       - name: "show env vars"
