@@ -1,15 +1,25 @@
 name: Greeting on variable day
 
 on:
-  workflow_dispatch
-
+  workflow_dispatch:
+    inputs:
+      deployto:
+        required: true
+        default: 'Test'
+        description: "Choose environment to deploy to"
+        type: choice
+        options:
+        - Test
+        - Acceptance
+        - Production
+        
 env:
   DAY_OF_WEEK: Monday
 
 jobs:
   greeting_job:
     runs-on: ubuntu-latest
-    environment: test
+    environment: ${{ github.event.inputs.deployto }}
     env:
       Greeting: Hello
     steps:
